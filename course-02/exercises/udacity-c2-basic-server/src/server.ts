@@ -1,8 +1,6 @@
 import express, { Router, Request, Response } from 'express';
-// import bodyParser from 'body-parser'; deprecated
-const bodyParser = require('body-parser')
 
-import { Car, cars as cars_list } from './cars';
+import { Car, cars as cars_list } from './cars.js';
 
 (async () => {
   let cars:Car[]  = cars_list;
@@ -14,7 +12,7 @@ import { Car, cars as cars_list } from './cars';
   
   //use middleware so post bodies 
   //are accessable as req.body.{{variable}}
-  app.use(bodyParser.json()); 
+  app.use(express.json()); 
   app.use(express.urlencoded({ extended: true })) //for requests from forms-like data
 
   // Root URI call
